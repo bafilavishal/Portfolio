@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Homepage</title>
+    
+    <link rel="stylesheet" href="css/index.css" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="[https://unpkg.com/swiper/swiper-bundle.min.css](https://unpkg.com/swiper/swiper-bundle.min.css)" />
+    <style>
+        /* Social Icons Size (moved here from original inline style) */
+        .social a img {
+            width: 32px; /* adjust size */
+            height: 32px;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+        .social a img:hover {
+            transform: scale(1.2);
+        }
+        
+        /* Timeline Styles from previous context (required for API Mastery section) */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        :root {
+            --neon-purple: #a855f7; /* Tailwind purple-500 */
+            --neon-blue: #3b82f6;   /* Tailwind blue-500 */
+            --glow-color: #6d28d9; /* Deep purple for shadows */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Note: If your index.css sets background, this may be overwritten */
+            background-color: #0d0c1d; 
+            color: #e0e0e0;
+            padding: 2rem 0;
+            overflow-x: hidden;
+        }
+
+        .neon-header {
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--neon-purple), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 5px var(--neon-purple), 0 0 10px var(--neon-blue);
+        }
+
+        .mastery-card {
+            background: #1a1a30; 
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            box-shadow: 
+                0 0 10px rgba(168, 85, 247, 0.3), 
+                0 0 20px rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+        .mastery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 0 15px rgba(168, 85, 247, 0.6), 
+                0 0 30px rgba(59, 130, 246, 0.4);
+        }
+
+        .timeline-line {
+            background: linear-gradient(to bottom, var(--neon-purple), var(--neon-blue));
+            width: 3px;
+            min-height: 100%;
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.5), 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .timeline-connector {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: var(--neon-purple);
+            border: 3px solid var(--neon-blue);
+            box-shadow: 0 0 8px var(--neon-blue);
+        }
+
+        .card-title {
+            color: #d1d5db; /* Light gray */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Responsive timeline layout for mobile */
+        @media (max-width: 768px) {
+            .timeline-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .card-wrapper-left, .card-wrapper-right {
+                width: 100%;
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .timeline-center {
+                position: absolute;
+                left: 1rem;
+                height: 100%;
+            }
+            .timeline-content {
+                padding-left: 3rem; 
+            }
+            .mastery-card {
+                margin-top: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h2 class="logo">Portfolio</h2>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="text">
+            <h1>Hello, I'm</h1>
+            <h1><span class="gradient">VISHAL BAFILA</span></h1>
+            <h1><span id="typed-text"></span></h1>
+            <p>
+                I build intelligent, responsive web applications and AI-powered solutions using modern technologies, with a passion for seamless user experiences and impactful innovation.
+            </p>
+
+            <div class="social">
+                <a href="https://github.com/bafilavishal" target="_blank">
+                    <img src="icons/github_733553.png" alt="GitHub" />
+                </a>
+                <a href="https://www.linkedin.com/in/vishal1bafila/" target="_blank">
+                    <img src="icons/linkedin_2504923.png" alt="LinkedIn" />
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vishalbafila63@gmail.com" target="_blank">
+  <img src="icons/gmail_888853.png" alt="Email" />
+</a>
+
+           <a 
+    href="files/resume.pdf" 
+    download="vishal-bafila-resume.pdf" >
+    <img src="icons/download_9502265.png" alt="Download Resume" />
+</a>
+            </div>
+        </div>
+
+        <div class="image">
+            <img src="img/vb the pic.png" alt="Profile Image" />
+        </div>
+    </section>
+
+    <section class="skills-section">
+        <div class="skills-inner ">
+            <header class="skills-header">
+                <h2 class="skills-title">Skills</h2>
+                <p class="skills-sub">Technical Expertise</p>
+            </header>
+            <div class="skills-slider">
+                <div class="slider-track">
+                    <div class="skill-item">
+                        <div class="skill-logo">
+                            <img src="icons/github_733553.png" alt="GitHub" />
+                        </div>
+                        <span class="skill-name">GitHub</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo">
+                            <img src="icons/icons8-python.svg" alt="Python" />
+                        </div>
+                        <span class="skill-name">Python</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo">
+                            <img src="icons/icons8-google-colab.svg" alt="Google Collab" />
+                        </div>
+                        <span class="skill-name">Google Collab</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo">
+                            <img src="icons/icons8-mongodb-24.png" alt="MongoDB" />
+                        </div>
+                        <span class="skill-name">MongoDB</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo">
+                            <img src="icons/icons8-ocr-100.png" alt="OCR" />
+                        </div>
+                        <span class="skill-name">OCR</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo">
+                            <img
+                                src="icons/icons8-visual-studio-code-48.png"
+                                alt="Visual Studio Code"
+                            />
+                        </div>
+                        <span class="skill-name">Visual Studio</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo">
+                            <img src="icons/icons8-pandas.svg" alt="Pandas" />
+                        </div>
+                        <span class="skill-name">Pandas</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo">
+                            <img src="icons/icons8-mysql.svg" alt="MySQL" />
+                        </div>
+                        <span class="skill-name">mysql</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo">
+                            <img src="icons/icons8-numpy.svg" alt="NumPy" />
+                        </div>
+                        <span class="skill-name">NumPy</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo">
+                            <img
+                                src="icons/icons8-artificial-intelligence-40.png"
+                                alt="AI"
+                            />
+                        </div>
+                        <span class="skill-name">AI</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo">
+                            <img
+                                src="icons/icons8-project-jupyter-48.png"
+                                alt="Jupyter"
+                            />
+                        </div>
+                        <span class="skill-name">Jupyter</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo">
+                            <img src="icons/icons8-chatgpt (1).svg" alt="OpenAI" />
+                        </div>
+                        <span class="skill-name">OpenAI</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-logo">
+                            <img src="icons/icons8-java-94.png" alt="Java" />
+                        </div>
+                        <span class="skill-name">Java</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Web Development</h3>
+                    <div class="badges">
+                        <span class="badge cyan">HTML</span>
+                        <span class="badge blue">CSS</span>
+                        <span class="badge yellow">JavaScript</span>
+                        <span class="badge purple">PHP</span>
+                        <span class="badge teal">Node.Js</span>
+                        <span class="badge violet">API</span>
+                        <span class="badge green">MySQL</span>
+                        <span class="badge blue-dark">MongoDB</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3>AI & Machine Learning</h3>
+                    <div class="badges">
+                        <span class="badge blue-dark">NLP</span>
+                        <span class="badge green-dark">LLM Integration</span>
+                        <span class="badge orange">Linear Regression</span>
+                        <span class="badge orange-light">Scikit-learn</span>
+                        <span class="badge green">OpenAI GPT</span>
+                        <span class="badge purple">RAG Systems</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Fundamentals & Programming</h3>
+                    <div class="badges">
+                        <span class="badge red">OOPs</span>
+                        <span class="badge purple">Data Structures</span>
+                        <span class="badge indigo">Algorithms</span>
+                        <span class="badge blue">C</span>
+                        <span class="badge green">C++</span>
+                        <span class="badge yellow">Python</span>
+                        <span class="badge red">Java</span>
+                        <span class="badge orange">C#</span>
+                    </div>
+                </div>
+            
+                <div class="skill-card">
+                    <h3>Data Visualization</h3>
+                    <div class="badges">
+                        <span class="badge gold">Scikit-learn</span>
+                        <span class="badge blue-dark">Matplotlib</span>
+                        <span class="badge purple">Pandas</span>
+                        <span class="badge indigo">NumPy</span>
+                        <span class="badge orange">OCR</span>
+                        <span class="badge violet">Data Analysis</span>
+                        <span class="badge teal">Statistical Analysis</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Version Control & Tools</h3>
+                    <div class="badges">
+                        <span class="badge red">Git</span>
+                        <span class="badge black">GitHub</span>
+                        <span class="badge blue">VS Code</span>
+                        <span class="badge orange-light">Jupyter</span>
+                        <span class="badge cyan">Google Collab</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Soft Skills</h3>
+                    <div class="badges">
+                        <span class="badge slate">Problem-Solving</span>
+                        <span class="badge red">Team Work</span>
+                        <span class="badge cyan">Adaptability</span>
+                        <span class="badge purple">Communication</span>
+                        <span class="badge blue">Creativity</span>
+                        <span class="badge green">Time Management</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="api-mastery-section mt-8">
+    <div class="container mx-auto px-4 md:px-8 max-w-4xl">
+
+        <div class="text-center mb-16">
+            <h1 class="text-5xl md:text-6xl neon-header mb-2 tracking-wider">EDUCATION</h1>
+            <p class="text-gray-400 uppercase tracking-widest text-sm">Academic Foundations & Trajectory</p>
+        </div>
+
+  
+        <div class="relative flex flex-col items-center">
+
+            <div class="timeline-line absolute left-1/2 -translate-x-1/2 w-0.5 md:block hidden" style="height: 100%;"></div>
+            <div class="timeline-center absolute top-0 bottom-0 left-0 md:hidden flex justify-center">
+                <div class="timeline-line w-0.5" style="height: 100%;"></div>
+            </div>
+
+            <div class="timeline-item w-full flex justify-end mb-16 relative">
+
+                <div class="card-wrapper-left w-full md:w-1/2 md:pr-20 pr-0 relative timeline-content">
+                    <div class="mastery-card p-6 rounded-xl shadow-lg border border-purple-600/50">
+                        <div class="md:hidden mb-4">
+                            <span class="text-xs font-semibold bg-blue-600 text-white px-3 py-1 rounded-full shadow-xl" style="box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);">2023 - Present</span>
+                        </div>
+
+                        <div class="flex items-center mb-3">
+                            <svg class="w-7 h-7 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <h3 class="card-title text-xl font-bold text-purple-400">Pursuing B.C.A. (Software Development Focus)</h3>
+                        </div>
+                        <p class="text-sm text-gray-300">Graphic Era Hill University</p>
+                        <p class="mt-3 text-sm text-gray-400">
+                            This curriculum is a launchpad for innovation. I am rigorously developing a dual expertise in Full-Stack Development and Data Science, while strategically integrating emerging AI and Machine Learning tools. The goal is to move beyond theory to create practical, data-driven, and truly intelligent solutions.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex absolute left-1/2 top-0 bottom-0 -translate-x-1/2 items-center justify-center h-full z-10">
+                    <div class="timeline-connector"></div>
+                </div>
+
+                <div class="hidden md:flex w-1/2 justify-end absolute left-0 top-0 h-full items-center z-10 pointer-events-none">
+                    <span class="text-xs font-semibold bg-blue-600 text-white px-3 py-1 rounded-full shadow-xl pointer-events-auto mr-1" style="box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);">IN PROGRESS</span>
+                </div>
+            </div>
+
+            <div class="timeline-item w-full flex justify-start mb-16 relative">
+
+                <div class="hidden md:flex absolute left-1/2 top-0 bottom-0 -translate-x-1/2 items-center justify-center h-full z-10">
+                    <div class="timeline-connector"></div>
+                </div>
+
+                <div class="hidden md:flex w-1/2 justify-start absolute right-0 top-0 h-full items-center z-10 pointer-events-none">
+                    <span class="text-xs font-semibold bg-blue-600 text-white px-3 py-1 rounded-full shadow-xl pointer-events-auto ml-1" style="box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);">COMPLETED 2023</span>
+                </div>
+
+                <div class="card-wrapper-right w-full md:w-1/2 md:pl-20 pl-0 relative timeline-content md:text-right">
+                    <div class="mastery-card p-6 rounded-xl shadow-lg border border-blue-600/50">
+                        <div class="md:hidden mb-4 md:text-left">
+                            <span class="text-xs font-semibold bg-blue-600 text-white px-3 py-1 rounded-full shadow-xl" style="box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);">2022 - 2023</span>
+                        </div>
+
+                        <div class="flex items-center md:justify-end mb-3">
+                            <h3 class="card-title text-xl font-bold mr-3 text-blue-400">Higher Secondary Certification (Intermediate)</h3>
+                            <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <p class="text-sm text-gray-300">Ever Green Sr.Sec. School</p>
+                        <p class="mt-3 text-sm text-gray-400">
+                            Achieved a strong foundation in mathematics, developing analytical thinking and structured problem-solving essential skills that directly feed into complex programming logic.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item w-full flex justify-end mb-16 relative">
+
+                <div class="card-wrapper-left w-full md:w-1/2 md:pr-20 pr-0 relative timeline-content">
+                    <div class="mastery-card p-6 rounded-xl shadow-lg border border-purple-600/50">
+                        <div class="md:hidden mb-4">
+                            <span class="text-xs font-semibold bg-blue-600 text-white px-3 py-1 rounded-full shadow-xl" style="box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);">2020-2021</span>
+                        </div>
+
+                        <div class="flex items-center mb-3">
+                            <svg class="w-7 h-7 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10m0 0h16m0 0V7m-8 10V7m-4 0v10M4 7h16M4 7v10m16-10v10m-8 0V7m-4 0v10"></path></svg>
+                            <h3 class="card-title text-xl font-bold text-purple-400">Secondary Education Completion (Class X)</h3>
+                        </div>
+                        <p class="text-sm text-gray-300">Ever Green Sr.Sec. School</p>
+                        <p class="mt-3 text-sm text-gray-400">
+                            Successfully completed foundational education, establishing the discipline and study habits necessary for advanced technical learning.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex absolute left-1/2 top-0 bottom-0 -translate-x-1/2 items-center justify-center h-full z-10">
+                    <div class="timeline-connector"></div>
+                </div>
+
+                <div class="hidden md:flex w-1/2 justify-end absolute left-0 top-0 h-full items-center z-10 pointer-events-none">
+                    <span class="text-xs font-semibold bg-blue-600 text-white px-3 py-1 rounded-full shadow-xl pointer-events-auto mr-1" style="box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);">COMPLETED 2021</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--  PROJECTS SECTIOON -->
+  <section class="projects-section py-16 bg-gradient-to-br from-gray-900 to-black relative">
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+
+        <div class="text-center mb-16">
+            <h1 class="text-5xl md:text-6xl neon-header mb-2 tracking-wider">MY PROJECTS</h1>
+            <p class="text-gray-400 uppercase tracking-widest text-sm">Innovations & Implementations</p>
+        </div>
+
+       
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+
+            <div class="project-card relative group bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-700 hover:border-blue-500 transition-all duration-300">
+                <div class="relative h-48 bg-gray-900 flex items-center justify-center p-4">
+                    <img src="img/food delivery.png" alt="VisionAI Project Preview" class="object-cover w-full h-full opacity-70 group-hover:opacity-100 transition-opacity duration-300">
+                    <span class="absolute top-3 right-3 text-xs font-semibold bg-blue-600 text-white px-3 py-1 rounded-full shadow-xl">Web Dev</span>
+                </div>
+
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-white mb-2">Food Delivery</h3>
+                    <p class="text-gray-400 text-sm mb-4">Comprehensive food delivery service. Features include user authentication, geolocation-based restaurant filtering, cart management, and a Stripe/Razorpay payment gateway. Showcases strong command over database modeling and client-server architecture.</p>
+                    
+                    <div class="project-links absolute inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <a href="https://github.com/bafilavishal/Food-delivery-Website" target="_blank" class="bg-gradient-to-r from-purple-600 to-blue-500 text-white px-6 py-3 rounded-full text-lg font-semibold hover:from-purple-700 hover:to-blue-600 transition-all duration-300 flex items-center shadow-lg">
+                            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.475.087.687-.206.687-.455 0-.224-.007-.818-.01-1.603-2.784.605-3.368-1.34-3.368-1.34-.455-1.157-1.11-1.465-1.11-1.465-.908-.62.068-.606.068-.606 1.004.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.088 2.91.831.091-.646.351-1.088.636-1.337-2.22-.253-4.555-1.113-4.555-4.93 0-1.088.39-1.979 1.029-2.677-.103-.253-.446-1.266.098-2.64c0 0 .84-.27 2.75 1.024A9.117 9.117 0 0112 5.05c.85.008 1.7.114 2.49.336 1.91-1.294 2.75-1.024 2.75-1.024.546 1.373.203 2.387.098 2.64.64.698 1.028 1.589 1.028 2.677 0 3.829-2.336 4.673-4.565 4.92.359.309.678.92.678 1.855 0 1.337-.012 2.419-.012 2.747 0 .249.212.542.692.447C19.145 20.218 22 16.46 22 12.017 22 6.484 17.522 2 12 2Z" clip-rule="evenodd" /></svg>
+                            GitHub
+                        </a>
+                        <a href="https://fooddiee-delivery.netlify.app/" target="_blank" class="bg-gradient-to-r from-green-500 to-teal-400 text-white px-6 py-3 rounded-full text-lg font-semibold hover:from-green-600 hover:to-teal-500 transition-all duration-300 flex items-center shadow-lg">
+                            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card relative group bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-700 hover:border-purple-500 transition-all duration-300">
+                <div class="relative h-48 bg-gray-900 flex items-center justify-center p-4">
+                    <img src="img/Gemini_Generated_Image_riirfxriirfxriir.png" alt="AI Chatbot Project Preview" class="object-cover w-full h-full opacity-70 group-hover:opacity-100 transition-opacity duration-300">
+                    <span class="absolute top-3 right-3 text-xs font-semibold bg-purple-600 text-white px-3 py-1 rounded-full shadow-xl">AI</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-white mb-2">Report Summarizer</h3>
+                    <p class="text-gray-400 text-sm mb-4">Developed an end-to-end software platform that transforms complex medical documentation into easily digestible summaries for faster review. The system is a complete solution, featuring secure document ingestion, robust task queuing for processing large reports, and a responsive UI that effectively presents critical patient data and summary results.</p>
+                
+                    <div class="project-links absolute inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <a href="https://github.com/bafilavishal/Report_Summarizer" target="_blank" class="bg-gradient-to-r from-purple-600 to-blue-500 text-white px-6 py-3 rounded-full text-lg font-semibold hover:from-purple-700 hover:to-blue-600 transition-all duration-300 flex items-center shadow-lg">
+                            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.475.087.687-.206.687-.455 0-.224-.007-.818-.01-1.603-2.784.605-3.368-1.34-3.368-1.34-.455-1.157-1.11-1.465-1.11-1.465-.908-.62.068-.606.068-.606 1.004.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.088 2.91.831.091-.646.351-1.088.636-1.337-2.22-.253-4.555-1.113-4.555-4.93 0-1.088.39-1.979 1.029-2.677-.103-.253-.446-1.266.098-2.64c0 0 .84-.27 2.75 1.024A9.117 9.117 0 0112 5.05c.85.008 1.7.114 2.49.336 1.91-1.294 2.75-1.024 2.75-1.024.546 1.373.203 2.387.098 2.64.64.698 1.028 1.589 1.028 2.677 0 3.829-2.336 4.673-4.565 4.92.359.309.678.92.678 1.855 0 1.337-.012 2.419-.012 2.747 0 .249.212.542.692.447C19.145 20.218 22 16.46 22 12.017 22 6.484 17.522 2 12 2Z" clip-rule="evenodd" /></svg>
+                            GitHub
+                        </a>
+                        <a href="https://chatbot.yourdomain.com" target="_blank" class="bg-gradient-to-r from-green-500 to-teal-400 text-white px-6 py-3 rounded-full text-lg font-semibold hover:from-green-600 hover:to-teal-500 transition-all duration-300 flex items-center shadow-lg">
+                            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card relative group bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-700 hover:border-green-500 transition-all duration-300">
+                <div class="relative h-48 bg-gray-900 flex items-center justify-center p-4">
+                    <img src="img/Gemini_Generated_Image_7dce6n7dce6n7dce.png" alt="Diabetes Predictor Project Preview" class="object-cover w-full h-full opacity-70 group-hover:opacity-100 transition-opacity duration-300">
+                    <span class="absolute top-3 right-3 text-xs font-semibold bg-green-600 text-white px-3 py-1 rounded-full shadow-xl">Web Dev</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-white mb-2">Uttrakhand Tourisms</h3>
+                    <p class="text-gray-400 text-sm mb-4">Developed an end-to-end digital platform designed to be the ultimate traveler companion. The software provides a responsive interface for tourists to plan itineraries, discover hidden gems, and book verified services. It features real-time data analytics on popular destinations and booking trends, demonstrating expertise in full-stack architecture.</p>
+                   
+                    <div class="project-links absolute inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <a href="https://github.com/bafilavishal/Uttrakhand-Tourism-Website-" target="_blank" class="bg-gradient-to-r from-purple-600 to-blue-500 text-white px-6 py-3 rounded-full text-lg font-semibold hover:from-purple-700 hover:to-blue-600 transition-all duration-300 flex items-center shadow-lg">
+                            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.475.087.687-.206.687-.455 0-.224-.007-.818-.01-1.603-2.784.605-3.368-1.34-3.368-1.34-.455-1.157-1.11-1.465-1.11-1.465-.908-.62.068-.606.068-.606 1.004.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.088 2.91.831.091-.646.351-1.088.636-1.337-2.22-.253-4.555-1.113-4.555-4.93 0-1.088.39-1.979 1.029-2.677-.103-.253-.446-1.266.098-2.64c0 0 .84-.27 2.75 1.024A9.117 9.117 0 0112 5.05c.85.008 1.7.114 2.49.336 1.91-1.294 2.75-1.024 2.75-1.024.546 1.373.203 2.387.098 2.64.64.698 1.028 1.589 1.028 2.677 0 3.829-2.336 4.673-4.565 4.92.359.309.678.92.678 1.855 0 1.337-.012 2.419-.012 2.747 0 .249.212.542.692.447C19.145 20.218 22 16.46 22 12.017 22 6.484 17.522 2 12 2Z" clip-rule="evenodd" /></svg>
+                            GitHub
+                        </a>
+                        <a href="https://uttrakhandtour.netlify.app/" target="_blank" class="bg-gradient-to-r from-green-500 to-teal-400 text-white px-6 py-3 rounded-full text-lg font-semibold hover:from-green-600 hover:to-teal-500 transition-all duration-300 flex items-center shadow-lg">
+                            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+
+        <div class="text-center mt-16">
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-colors duration-300">
+                Show More Projects
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<!--    certificate  -->
+   <section id="certifications" class="py-16 bg-gray-900 text-white relative">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-5xl font-extrabold mb-2" style="font-family: 'Montserrat', sans-serif; color: #a78bfa;">
+                • Certifications •
+            </h2>
+            <p class="text-lg text-gray-400 uppercase tracking-widest">Professional Achievements</p>
+        </div>
+
+        <div class="relative flex items-center justify-center">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 px-12 overflow-hidden">
+
+                <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 group">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center p-4">
+                        <img src="img/Screenshot 2025-09-27 101257.png" alt="Certified AI Foundations Associate" class="max-h-full max-w-full object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Certified AI Foundations Associate</h3>
+                        <p class="text-gray-400 text-sm">Oracle</p>
+                        <a href="https://www.linkedin.com/in/vishal1bafila/" target="_blank" class="mt-4 inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors duration-200">
+                            View Certificate <span class="ml-1 text-lg">↗</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 group">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center p-4">
+                        <img src="img/Screenshot 2025-09-27 101331.png" alt="Technology Job Simulation" class="max-h-full max-w-full object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Technology Job Simulation</h3>
+                        <p class="text-gray-400 text-sm">Deloitte</p>
+                        <a href="https://www.linkedin.com/in/vishal1bafila/" target="_blank" class="mt-4 inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors duration-200">
+                            View Certificate <span class="ml-1 text-lg">↗</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 group">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center p-4">
+                        <img src="img/Screenshot 2025-09-27 101408.png" alt="Software Engineering Job Simulation" class="max-h-full max-w-full object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Software Engineering Job Simulation</h3>
+                        <p class="text-gray-400 text-sm">JPMorgan Chase & Co</p>
+                        <a href="https://www.linkedin.com/in/vishal1bafila/" target="_blank" class="mt-4 inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors duration-200">
+                            View Certificate <span class="ml-1 text-lg">↗</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 group">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center p-4">
+                        <img src="img/Screenshot 2025-09-27 105843.png" alt="Introduction to web development with chatgpt" class="max-h-full max-w-full object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Introduction to web development with chatgpt</h3>
+                        <p class="text-gray-400 text-sm">Simplilearn</p>
+                        <a href="https://www.linkedin.com/in/vishal1bafila/" target="_blank" class="mt-4 inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors duration-200">
+                            View Certificate <span class="ml-1 text-lg">↗</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 group">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center p-4">
+                        <img src="img/Screenshot 2025-09-27 110136.png" alt="Scientific Writing in Health Research" class="max-h-full max-w-full object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Scientific Writing in Health Research
+                        </h3>
+                        <p class="text-gray-400 text-sm">Swayam</p>
+                        <a href="https://www.linkedin.com/in/vishal1bafila/" target="_blank" class="mt-4 inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors duration-200">
+                            View Certificate <span class="ml-1 text-lg">↗</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 group">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center p-4">
+                        <img src="img/Screenshot 2025-09-27 110217.png" alt="Psychology of Learning" class="max-h-full max-w-full object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Psychology of Learning</h3>
+                        <p class="text-gray-400 text-sm">Swayam</p>
+                        <a href="https://www.linkedin.com/in/vishal1bafila/" target="_blank" class="mt-4 inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors duration-200">
+                            View Certificate <span class="ml-1 text-lg">↗</span>
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+
+            
+        </div>
+    </div>
+</section>
+   <footer class="bg-gray-800 text-gray-400 py-8">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+
+        <p class="text-sm">
+            © <span id="currentYear"></span> **Vishal Bafila**. All Rights Reserved.
+        </p>
+
+        <div class="flex space-x-6">
+            
+            <a href="https://www.linkedin.com/in/vishal1bafila/" target="_blank" aria-label="LinkedIn profile" class="text-gray-400 hover:text-purple-400 transition-colors duration-200">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.136-4 0v5.604h-3v-11h3v1.765c1.395-2.43 4-2.282 4-2.282s.783-.243 1.5-.098v11.615z"/></svg>
+            </a>
+            
+            <a href="https://github.com/bafilavishal" target="_blank" aria-label="GitHub profile" class="text-gray-400 hover:text-purple-400 transition-colors duration-200">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.475.087.687-.206.687-.455 0-.224-.007-.818-.01-1.603-2.784.605-3.368-1.34-3.368-1.34-.455-1.157-1.11-1.465-1.11-1.465-.908-.62.068-.606.068-.606 1.004.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.088 2.91.831.091-.646.351-1.088.636-1.337-2.22-.253-4.555-1.113-4.555-4.93 0-1.088.39-1.979 1.029-2.677-.103-.253-.446-1.266.098-2.64c0 0 .84-.27 2.75 1.024A9.117 9.117 0 0112 5.05c.85.008 1.7.114 2.49.336 1.91-1.294 2.75-1.024 2.75-1.024.546 1.373.203 2.387.098 2.64.64.698 1.028 1.589 1.028 2.677 0 3.829-2.336 4.673-4.565 4.92.359.309.678.92.678 1.855 0 1.337-.012 2.419-.012 2.747 0 .249.212.542.692.447C19.145 20.218 22 16.46 22 12.017 22 6.484 17.522 2 12 2Z" clip-rule="evenodd" /></svg>
+            </a>
+            
+            <a href="mailto:vishalbafila63@gmail.com" aria-label="Email me" class="text-gray-400 hover:text-purple-400 transition-colors duration-200">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+            </a>
+        </div>
+        
+    </div>
+</footer>
+    <script src="js/index.js"></script>
+    <script src="[https://unpkg.com/swiper/swiper-bundle.min.js](https://unpkg.com/swiper/swiper-bundle.min.js)"></script>
+</body>
+</html>

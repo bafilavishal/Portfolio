@@ -1,0 +1,509 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* ----------------- Navbar ----------------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+}
+
+.navbar .logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #aaa;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+  color: #3b82f6;
+}
+
+/* ----------------- Hero Section ----------------- */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 150px 80px 50px;
+}
+#typed-text {
+  display: inline-block;
+  min-width: 120px; /* adjust to longest word */
+  font-family: monospace;
+}
+
+.text {
+  max-width: 600px;
+}
+
+.text h1 {
+  font-size: 36px;
+  margin: 10px 0;
+}
+
+.text .gradient {
+  background: linear-gradient(90deg, #9333ea, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #bbb;
+}
+
+.social {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+.social a img {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease;
+}
+
+.social a img:hover {
+  transform: scale(1.2);
+}
+
+.image img {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  border: 2px solid #3b82f6;
+  object-fit: cover;
+}
+
+/* ----------------- Scroll Down ----------------- */
+.scroll-down {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.scroll-down p {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.scroll-down i {
+  font-size: 20px;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+/* ----------------- Bottom Nav ----------------- */
+.bottom-nav {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(20, 20, 30, 0.9);
+  padding: 12px 25px;
+  border-radius: 30px;
+  display: flex;
+  gap: 25px;
+  z-index: 200;
+}
+
+.bottom-nav a {
+  color: #ccc;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.bottom-nav a:hover {
+  color: #3b82f6;
+}
+
+/* ----------------- Skills Section ----------------- */
+.skills-section {
+  width:100%; 
+  padding: 50px 20px;
+  background: #0b0b0f;
+}
+
+/* Header */
+.skills-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.skills-title {
+  font-size: 40px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #7c5cff, #5aa9ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.skills-sub {
+  color: #aaa;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+/* Slider container */
+/* ----------------- Skills Slider ----------------- */
+/* Container for the entire skills grid */
+/* Container for the slider */
+.skills-slider {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px;
+  background-color: #0f1118;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  /* Use CSS to create a fading effect on the sides */
+}
+
+/* The track containing all the skill items */
+.slider-track {
+  display: flex;
+  gap: 20px; /* Space between each skill item */
+  animation: scroll-left 40s linear infinite; /* Animation to make it float */
+}
+
+/* Keyframe animation for continuous left-to-right scroll */
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Styling for each individual skill card */
+/* Container for the slider */
+.skills-slider {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px;
+  background-color: #0f1118;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+}
+
+/* The track containing all the skill items */
+.slider-track {
+  display: flex;
+  gap: 20px; /* Space between each skill item */
+}
+
+/* Style for each individual skill card */
+.skill-item {
+  flex-shrink: 0; /* Prevents items from shrinking */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 15px;
+  width: 120px; /* Set a fixed width for each item */
+  height: auto;
+  background-color: #1a1e26;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+  overflow: hidden; /* Important for the inner glow effect */
+}
+
+/* Inner glow effect on hover and active state */
+.skill-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 15px 5px rgba(100, 150, 255, 0.4) inset;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.skill-item:hover::before,
+.skill-item.active::before {
+  opacity: 1;
+}
+
+/* The active state styles (for the GitHub icon) */
+.skill-item.active {
+  background-color: rgba(26, 30, 38, 0.8);
+  border: 1px solid rgba(130, 150, 255, 0.8);
+  box-shadow: 0 0 30px 5px rgba(100, 150, 255, 0.6);
+}
+
+/* Styling for the icon within the card */
+.skill-logo {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.skill-logo img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Styling for the text label */
+.skill-name {
+  color: #fff;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* ----------------- Skills Grid ----------------- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-left: 50px;
+  margin-top: 60px;
+  margin-right: 50px;
+  margin-bottom: 40px;
+}
+
+.skill-card {
+  /* Updated background with a subtle pattern and gradient */
+  background-image: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.02) 25%,
+      transparent 25%
+    ),
+    linear-gradient(225deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%);
+  background-size: 20px 20px;
+  background-color: #1a1e26; /* A solid dark color */
+  border-radius: 16px;
+  padding: 20px;
+  min-height: 160px;
+  border: 1px solid rgba(255, 255, 255, 0.05); /* Slightly more visible border */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before {
+  content: "";
+  position: absolute;
+  inset: -30% -10% auto -30%;
+  height: 200%;
+  width: 160%;
+  background: radial-gradient(
+      circle at 10% 20%,
+      rgba(255, 255, 255, 0.02),
+      transparent 6%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(255, 255, 255, 0.015),
+      transparent 8%
+    );
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.7);
+}
+
+.skill-card h3 {
+  margin: 0 0 12px;
+  color: #7c5cff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Badges */
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  white-space: nowrap;
+}
+
+/* Badge colors */
+.badge.cyan {
+  background: linear-gradient(90deg, #63e0ff, #4fb1ff);
+  color: #05121a;
+}
+.badge.blue {
+  background: linear-gradient(90deg, #4f8bff, #3b6dff);
+  color: #fff;
+}
+.badge.blue-dark {
+  background: linear-gradient(90deg, #2d6df6, #1c4be0);
+  color: #fff;
+}
+.badge.green {
+  background: linear-gradient(90deg, #10b981, #06a56a);
+  color: #fff;
+}
+.badge.green-dark {
+  background: linear-gradient(90deg, #0f6c4a, #07472f);
+  color: #fff;
+}
+.badge.green-light {
+  background: linear-gradient(90deg, #a3fbd9, #54c193);
+  color: #121815;
+}
+.badge.yellow {
+  background: linear-gradient(90deg, #ffde54, #f2c730);
+  color: #1a1a0d;
+}
+.badge.orange {
+  background: linear-gradient(90deg, #ff7a45, #ff6b2d);
+  color: #fff;
+}
+.badge.orange-light {
+  background: linear-gradient(90deg, #ff9e58, #ff8c40);
+  color: #1a1a0d;
+}
+.badge.red {
+  background: linear-gradient(90deg, #ff5c5c, #ff3b3b);
+  color: #fff;
+}
+.badge.purple {
+  background: linear-gradient(90deg, #9b7cff, #7c5cff);
+  color: #fff;
+}
+.badge.violet {
+  background: linear-gradient(90deg, #c78dff, #a967ff);
+  color: #fff;
+}
+.badge.teal {
+  background: linear-gradient(90deg, #00c7a4, #00967a);
+  color: #fff;
+}
+.badge.indigo {
+  background: linear-gradient(90deg, #667eea, #5c6ac4);
+  color: #fff;
+}
+.badge.gray {
+  background: linear-gradient(90deg, #a0a0a0, #7a7a7a);
+  color: #fff;
+}
+.badge.black {
+  background: linear-gradient(90deg, #303030, #1a1a1a);
+  color: #fff;
+}
+.badge.slate {
+  background: linear-gradient(90deg, #64748b, #475569);
+  color: #fff;
+}
+.badge.gold {
+  background: linear-gradient(90deg, #ffde54, #ffc72c);
+  color: #1a1a0d;
+}
+
+/* Hover effect */
+.badge:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* ----------------- Responsive ----------------- */
+@media (max-width: 1100px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*  MY PROJECTS  */
+/* In your main CSS file, e.g., styles.css */
+.neon-header {
+    /* Example for a purple-ish neon glow */
+    color: #fff; /* Base text color */
+    text-shadow:
+        0 0 7px #e60073,
+        0 0 10px #e60073,
+        0 0 21px #e60073,
+        0 0 42px #0fa,
+        0 0 82px #0fa,
+        0 0 92px #0fa,
+        0 0 102px #0fa,
+        0 0 151px #0fa;
+    animation: flicker 1.5s infinite alternate; /* Optional: add a subtle flicker effect */
+}
+
+/* Optional flicker animation */
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow:
+            0 0 7px #e60073,
+            0 0 10px #e60073,
+            0 0 21px #e60073,
+            0 0 42px #0fa,
+            0 0 82px #0fa,
+            0 0 92px #0fa,
+            0 0 102px #0fa,
+            0 0 151px #0fa;
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+    }
+}
